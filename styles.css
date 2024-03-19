@@ -104,7 +104,7 @@ nav ul li a:hover {
   width: 60%;
   height: 100vh;
   padding: 20% 0;
-  background: rgba(255, 255, 255);
+  background: rgb(177, 151, 149);
   transition: all 0.5s ease-in;
   z-index: 2;
 }
