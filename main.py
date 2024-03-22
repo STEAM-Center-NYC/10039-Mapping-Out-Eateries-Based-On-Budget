@@ -5,6 +5,9 @@ import pymysql.cursors
 from flask_httpauth import HTTPBasicAuth
 from dynaconf import Dynaconf
 
+app = Flask(__name__)
+app.secret_key = "top_secret"
+
 settings = Dynaconf(
     settings_file=['settings.toml']
 )
@@ -18,3 +21,10 @@ def connect_db():
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
     )
+@app.route('/home')
+def index():
+    return render_template('index.html.jinja')
+
+@app.route('/aboutus')
+def about():
+    return render_template('Aboutus.html.jinja')
