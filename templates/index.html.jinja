@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" target="_blank" href="styles.css" />
+    <link rel="stylesheet" type="text/css" target="_blank" href="/static/style.css" />
   </head>
   
   <body>
     <nav>
       <div class="logo">
-        <img src="logo.png" alt="Eats For Cheap Logo">
+        <img src="/static/logo.png" alt="Eats For Cheapx Logo">
         <h1>Eats for Cheap</h1>
       </div>
       <ul>
         <li>
-          <a href="index.html.jinja">Home</a>
+          <a href="/templates/index.html.jinja">Home</a>
         </li>
-       
         <li>
-          <a href="Aboutus.html.jinja">About Us</a>
+          <a href="/templates/Aboutus.html.jinja">About Us</a>
         </li>
         <li>
           <a href="#">Contact Us</a>
@@ -35,18 +34,21 @@
     <div class="menubar">
       <ul>
         <li>
-          <a href="index.html.jinja">Home</a>
+          <a href="/templates/index.html.jinja">Home</a>
         </li>
         <li>
-          <a href="Aboutus.html.jinja">Aboutus</a>
+          <a href="/templates/Aboutus.html.jinja">Aboutus</a>
         </li>
-        <li>
-         
         <li>
           <a href="#">Contact Us</a>
         </li>
       </ul>
     </div>
+    <li>
+    {% for restaurants in rests %}
+    {{ restaurants['cheap food'] }}
+    {% endfor %}
+    </li>
     <script src="script.js"></script>
     <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1tDJM4A7CpwXy0GWBvw4eDTInQHEh3ho&ehbc=2E312F" width="640" height="480"></iframe>    
   </body>

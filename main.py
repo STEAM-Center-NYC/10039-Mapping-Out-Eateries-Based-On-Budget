@@ -5,9 +5,27 @@ import pymysql.cursors
 from flask_httpauth import HTTPBasicAuth
 from dynaconf import Dynaconf
 
+app = Flask(__name__)
+app.secret_key = "top_secret"
+
 settings = Dynaconf(
     settings_file=['settings.toml']
 )
+
+def get_id(self):
+    return str(self.id)
+
+def get_db():
+    '''Opens a new database connection per request.'''        
+    if not hasattr(g, 'db'):
+        g.db = connect_db()
+    return g.db 
+
+@app.teardown_appcontext
+def close_db(error):
+    '''Closes the database connection at the end of request.'''    
+    if hasattr(g, 'db'):
+        g.db.close() 
 
 def connect_db():
     return pymysql.connect(
@@ -18,3 +36,18 @@ def connect_db():
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
     )
+
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    cursor = get_db().cursor()
+    cursor.execute("SELECT * FROM `cheap food`")
+    rests = cursor.fetchall()
+    cursor.close()
+    return render_template("index.html.jinja", rests=rests)
+
+@app.route('/aboutus')
+def about():
+    return render_template('Aboutus.html.jinja')
+
+if __name__ == '__main__':
+    app.run(debug=True)
