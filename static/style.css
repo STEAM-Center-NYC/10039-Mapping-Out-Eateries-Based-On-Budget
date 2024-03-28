@@ -99,7 +99,7 @@ nav ul li a:hover {
   top: 0;
   left: -60%;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: flex-start;
   width: 60%;
   height: 100vh;
@@ -109,7 +109,7 @@ nav ul li a:hover {
   z-index: 2;
 }
 .active {
-  left: 0;
+  right: 0;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 

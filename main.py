@@ -19,7 +19,7 @@ def get_db():
     '''Opens a new database connection per request.'''        
     if not hasattr(g, 'db'):
         g.db = connect_db()
-    return g.db    
+    return g.db 
 
 @app.teardown_appcontext
 def close_db(error):
@@ -36,15 +36,14 @@ def connect_db():
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True
     )
-@app.route('/')
+
+@app.route('/', methods=['POST', 'GET'])
 def index():
     cursor = get_db().cursor()
-    if request.method == 'POST':
-        cursor.execute("SELECT * FROM `Name`")
-        rests = cursor.fetchall()
-        get_db().commit()
-    return render_template('index.html.jinja', rests=rests)
-
+    cursor.execute("SELECT * FROM `cheap food`")
+    rests = cursor.fetchall()
+    cursor.close()
+    return render_template("index.html.jinja", rests=rests)
 
 @app.route('/aboutus')
 def about():

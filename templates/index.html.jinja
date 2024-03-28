@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" target="_blank" href="styles.css" />
+    <link rel="stylesheet" type="text/css" target="_blank" href="/static/style.css" />
   </head>
   
   <body>
     <nav>
       <div class="logo">
-        <img src="logo.png" alt="Eats For Cheap Logo">
+        <img src="/static/logo.png" alt="Eats For Cheapx Logo">
         <h1>Eats for Cheap</h1>
       </div>
       <ul>
@@ -46,7 +46,7 @@
     </div>
     <li>
     {% for restaurants in rests %}
-    {{ restaurants['Name'] }}
+    {{ restaurants['cheap food'] }}
     {% endfor %}
     </li>
     <script src="script.js"></script>
