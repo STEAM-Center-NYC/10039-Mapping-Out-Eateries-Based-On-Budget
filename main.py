@@ -2,7 +2,6 @@ from flask import Flask, g, render_template, request, redirect
 import flask_login
 import pymysql
 import pymysql.cursors
-from flask_httpauth import HTTPBasicAuth
 from dynaconf import Dynaconf
 
 app = Flask(__name__)
